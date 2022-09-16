@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch Todo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+    <div id="loading">
+      <div class="loading" role="status">
+        <img
+          src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw340"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="container">
+        <h1 class="mb-4">CRUD Todo list js</h1>
+      <div class="action">
+        <form action="!#" id="add-product" autocomplete="off">
+          <div class="row">
+            <div class="col-4">
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  name="name"
+                  class="form-control"
+                  placeholder="Name"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                  required
+                />
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  name="provider"
+                  class="form-control"
+                  placeholder="Provider"
+                  aria-label="Provider"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="input-group mb-3">
+                <input
+                  type="number"
+                  name="price"
+                  class="form-control"
+                  placeholder="Price"
+                  aria-label="Price"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+            <div class="col-11 mb-4 text-right" onclick="onSearch(this)">
+              <button type="button" class="btn btn-primary">Search</button>
+            </div>
+            <div class="col-1 mb-4 text-right">
+              <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="product">
+        <table class="table table-success table-striped product-table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Provider</th>
+              <th scope="col">Price</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider data-body edit"></tbody>
+        </table>
+      </div>
+        <div id="dialog-update"
+          class="modal"
+          aria-labelledby="exampleModalToggleLabel"
+        >
+            <div class="dialog-overflow"></div>
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">
+                  Update
+                </h5>
+              </div>
+              <div class="modal-body">
+                 <form action="!#" id="update-product">
+          <div class="row">
+            <div class="col-12">
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  name="name"
+                  class="form-control"
+                  placeholder="Name"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  name="provider"
+                  class="form-control"
+                  placeholder="Provider"
+                  aria-label="Provider"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="input-group mb-3">
+                <input
+                  type="number"
+                  name="price"
+                  class="form-control"
+                  placeholder="Price"
+                  aria-label="Price"
+                  aria-describedby="basic-addon1"
+                />
+                <input
+                  type="text" name="id" hidden
+                />
+              </div>
+            </div>
+          </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  class="btn btn-primary"
+                >
+                  Update
+                </button></form>
+                <button onclick="closeModal(this)"
+                  class="btn btn-secondary"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="dialog-delete"
+          class="modal"
+          aria-labelledby="exampleModalToggleLabel"
+        >
+            <div class="dialog-overflow"></div>
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">
+                  Delete
+                </h5>
+              </div>
+              <div class="modal-body">
+                <h2>Bạn có muốn xóa sản phẩm này không</h2>
+                <input name="id" hidden/>
+              </div>
+              <div class="modal-footer">
+                <button onclick="deleteData(this)"
+                  class="btn btn-primary"
+                >
+                  Delete
+                </button>
+                <button onclick="closeModal(this)"
+                  class="btn btn-secondary"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="main.js"></script>
+</html>
